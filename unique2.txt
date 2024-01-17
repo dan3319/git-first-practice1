@@ -1,9 +1,2 @@
-
-
-file1
-
-qweer
-
-
-afhthh
+master 파일입니다.
 
