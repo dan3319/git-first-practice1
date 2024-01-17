@@ -1,0 +1,6 @@
+* {border: 1px solid green} /* *는 모든 선택자, 범용 선택자 */
+h2 { color: blue; background-color: yellow;}    /* 태그 선택자 */
+#descript {background-color: pink;} /* 아이디 선택자 */
+.bold { font-weight: bold;} /* 클래스 선택자 */
+#first li { color: blue;}  /* 자손 선택자 */
+#second>li {color: purple;} /* 자식 선택자 */
