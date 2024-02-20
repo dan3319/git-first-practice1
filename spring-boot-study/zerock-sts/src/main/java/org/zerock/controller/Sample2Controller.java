@@ -15,5 +15,4 @@ public class Sample2Controller {
         System.out.println("/hrdp/ma/pmmao/newIndexRenewal.do실행");
     }
 
-
 }
