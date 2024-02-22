@@ -6,12 +6,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages = "org.zerock.service")
 @MapperScan(basePackages = {"org.zerock.mapper"})
 public class DBConfig {
     @Bean
@@ -23,7 +25,7 @@ public class DBConfig {
         hikariConfig.setPassword("123456");
 
         hikariConfig.setPoolName("oracle-freebo");
-        hikariConfig.setMaximumPoolSize(20);
+        hikariConfig.setMaximumPoolSize(5);
 
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 
@@ -34,7 +36,8 @@ public class DBConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource());
-
+        sqlSessionFactory.setMapperLocations(
+        		new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/**/*.xml"));
         return (SqlSessionFactory) sqlSessionFactory.getObject();
     }
 }

@@ -5,7 +5,7 @@
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 		<!-- < 혹은 > 등의 특수문자 부등호 때문에 사용 -->
 		<![CDATA[
-			select * from tbl_board where bno > 0
+			select * from tbl_board where bno > 0 order by bno desc
 		]]>
 	</select>
 
@@ -21,4 +21,41 @@
 		insert into tbl_board (bno,title,content,writer)
 		values (#{bno}, #{title}, #{content}, #{writer})
 	</insert>
+
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board where bno = #{bno}
+	</select>
+
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+	</delete>
+
+	<update id="update">
+		update tbl_board
+		set title = #{title},
+		content = #{content},
+		writer = #{writer},
+		updateDate = sysdate
+		where bno = #{bno}
+	</update>
+
+	<select id="getDynamicMybatis" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board
+
+		<trim prefix="where (" suffix=")" prefixOverrides="OR" >
+			<foreach item="val" index="key" collection="map">
+				<trim  prefix ="OR" >
+					<if test="key == 'C'.toString()">
+						content = #{val}
+					</if>
+					<if test="key == 'T'.toString()">
+						title = #{val}
+					</if>
+					<if test="key == 'W'.toString()">
+						writer = #{val}
+					</if>
+				</trim>
+			</foreach>
+		</trim>
+	</select>
 </mapper>
