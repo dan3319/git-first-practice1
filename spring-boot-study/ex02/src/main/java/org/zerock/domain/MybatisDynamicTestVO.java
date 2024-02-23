@@ -9,6 +9,4 @@ import java.util.Map;
 @Getter
 public class MybatisDynamicTestVO {
     private Map<String, String> map;
-
 }
-

@@ -257,6 +257,27 @@
                                 <div>
                                     <a href="/board/register" class="btn btn-primary">작성하기</a>
                                 </div>
+								<div style="display: flex; align-items: center; justify-content: center;">
+                                    <div style="margin-right: 10px;">검색</div>
+                                    <div>
+                                        <form id='searchForm' action='/board/list' method='get'>
+                                            <select name='type'>
+                                                <option value="">--</option>
+                                                <option value="T" <c:out value="${criteria.type == 'T' ? 'selected' : ''}" /> >제목</option>
+                                                <option value="C" <c:if test="${criteria.type == 'C'}">selected</c:if> >내용</option>
+                                                <option value="W" <c:if test="${criteria.type == 'W'}">selected="selected"</c:if> >작성자</option>
+                                                <option value="TC" <c:if test="${criteria.type == 'TC'}">selected="selected"</c:if> >제목 or 내용</option>
+                                                <option value="TW" <c:if test="${criteria.type == 'TW'}">selected="selected"</c:if> >제목 or 작성자</option>
+                                                <option value="WC" <c:if test="${criteria.type == 'WC'}">selected="selected"</c:if> >작성자 or 내용</option>
+                                                <option value="TWC" <c:if test="${criteria.type == 'TWC'}">selected="selected"</c:if> >제목 or 내용 or 작성자</option>
+                                            </select>
+                                            <input type='text' name='keyword' value='<c:out value="${criteria.keyword}"/>' />
+                                            <%-- <input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
+                                            <input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' /> --%>
+                                            <button class='btn btn-primary'>Search</button>
+                                        </form>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>

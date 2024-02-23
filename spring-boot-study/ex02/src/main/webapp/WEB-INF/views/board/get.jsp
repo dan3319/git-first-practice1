@@ -42,6 +42,23 @@
                     삭제하기
                 </button>
             </form>
+            <!-- reply -->
+            <hr>
+            <div>댓글 </div>
+            <hr>
+            <form id="replyForm">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                          <ul class="chat"></ul>
+                      </div>
+                      <div class="panel-heading">
+                          <i class="fa fa-comments fa-fw"></i> Reply
+                          <input type="text" name="reply" id="reply" style="width:60%;" />
+                          <button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
+                      </div>
+                      <div class="panel-footer"></div>
+                </div>
+            </form>
         </div>
     </div>
 
