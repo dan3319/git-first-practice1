@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starbucks Korea Coffee</title>
   <!-- 파비콘 -->
-  <link rel="icon" href="./resources/images/favicon.ico" />
+  <link rel="icon" href="./images/favicon.ico" />
   <!-- reset.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
   <!-- google font & google material icon -->
@@ -24,10 +24,10 @@
   <!-- Google 매트리얼 아이콘 -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-  <link rel="stylesheet" href="./resources/css/main.css" />
-  <link rel="stylesheet" href="./resources/css/notice.css" />
+  <link rel="stylesheet" href="/resources/css/main.css" />
+  <link rel="stylesheet" href="/resources/css/notice.css" />
   
-  <script defer src="./resources/js/jquery-3.7.1.min.js"></script>
+  <script defer src="/resources/js/jquery-3.7.1.min.js"></script>
   <!-- lodash -->
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <!-- gsap -->
@@ -38,15 +38,15 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
-  <script defer src="./resources/js/main.js"></script>
+  <script defer src="/resources/js/main.js"></script>
 </head>
 
 <body>
   <header>
     <div class="inner">
       <!-- 로고 이미지 부분 -->
-      <a href="./index" class="logo">
-        <img src="./resources/images/starbucks_logo.png" alt="starbucks_logo" />
+      <a href="/" class="logo">
+        <img src="/resources/images/starbucks_logo.png" alt="starbucks_logo" />
       </a>
 
       <!-- 위에 있는 서브 메뉴 부분 -->
@@ -323,7 +323,7 @@
 %>
 <ul>
 	<li><%= rs.getInt("NUM") %></li>
-	<li><a href="./notice_detail?num=<%= rs.getInt("NUM") %>"><%= rs.getString("SUBJECT") %></a></li>
+	<li><a href="/notice_detail?num=<%= rs.getInt("NUM") %>"><%= rs.getString("SUBJECT") %></a></li>
 	<li><%= rs.getInt("HIT") %></li>
 	<li><%= rs.getString("REGDATE").substring(0, 10) %></li>
 </ul>	

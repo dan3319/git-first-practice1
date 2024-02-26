@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starbucks Korea Coffee</title>
   <!-- 파비콘 -->
-  <link rel="icon" href="./resources/images/favicon.ico" />
+  <link rel="icon" href="/resources/images/favicon.ico" />
   <!-- reset.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
   <!-- google font & google material icon -->
@@ -18,9 +18,9 @@
   <!-- Google 매트리얼 아이콘 -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-  <link rel="stylesheet" href="./resources/css/main.css" />
+  <link rel="stylesheet" href="/resources/css/main.css" />
   
-  <script defer src="./resources/js/jquery-3.7.1.min.js"></script>
+  <script defer src="/resources/js/jquery-3.7.1.min.js"></script>
   <!-- lodash -->
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <!-- gsap -->
@@ -31,15 +31,15 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
-  <script defer src="./resources/js/main.js"></script>
+  <script defer src="/resources/js/main.js"></script>
 </head>
 
 <body>
   <header>
     <div class="inner">
       <!-- 로고 이미지 부분 -->
-      <a href="./index" class="logo">
-        <img src="./resources/images/starbucks_logo.png" alt="starbucks_logo" />
+      <a href="/" class="logo">
+        <img src="/resources/images/starbucks_logo.png" alt="starbucks_logo" />
       </a>
 
       <!-- 위에 있는 서브 메뉴 부분 -->
@@ -258,10 +258,10 @@
     <!-- badges -->
     <div class="badges">
       <div class="badge">
-        <img src="./images/badge1.jpg" alt="badge1" />
+        <img src="/resources/images/badge1.jpg" alt="badge1" />
       </div>
       <div class="badge">
-        <img src="./images/badge2.jpg" alt="badge2" />
+        <img src="/resources/images/badge2.jpg" alt="badge2" />
       </div>
     </div>
   </header>
@@ -270,7 +270,7 @@
   <section class="visual">
     <div class="inner">
       <div class="title fade-in">
-        <img src="./resources/images/visual_title.png" alt="starbucks delightful" />
+        <img src="/resources/images/visual_title.png" alt="starbucks delightful" />
         <a href="javascript:void(0);" class="btn btn--brown">자세히 보기</a>
       </div>
       <div class="fade-in">
@@ -299,7 +299,7 @@
           <div class="swiper-container">
             
           </div>
-          <a href="./notice" class="notice-line__more">
+          <a href="/notice" class="notice-line__more">
             <span class="material-symbols-outlined">
               add_circle
             </span>
@@ -322,25 +322,25 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="/resources/images/promotion_slide1.jpg" alt="promotion1" />
+            <img src="./images/promotion_slide1.jpg" alt="promotion1" />
             <a href="javascript:void(0);" class="btn btn--promotion">자세히 보기</a>
           </div>
           <div class="swiper-slide">
-            <img src="/resources/images/promotion_slide2.jpg" alt="promotion2" />
+            <img src="./images/promotion_slide2.jpg" alt="promotion2" />
             <a href="javascript:void(0);" class="btn btn--promotion">
               자세히 보기
             </a>
           </div>
           <div class="swiper-slide">
-            <img src="/resources/images/promotion_slide3.jpg" alt="promotion3" />
+            <img src="./images/promotion_slide3.jpg" alt="promotion3" />
             <a href="javascript:void(0);" class="btn btn--promotion">자세히 보기</a>
           </div>
           <div class="swiper-slide">
-            <img src="/resources/images/promotion_slide4.jpg" alt="promotion4" />
+            <img src="./images/promotion_slide4.jpg" alt="promotion4" />
             <a href="javascript:void(0);" class="btn btn--promotion">자세히 보기</a>
           </div>
           <div class="swiper-slide">
-            <img src="/resources/images/promotion_slide5.jpg" alt="promotion5" />
+            <img src="./images/promotion_slide5.jpg" alt="promotion5" />
             <a href="javascript:void(0);" class="btn btn--promotion">자세히 보기</a>
           </div>
         </div>
