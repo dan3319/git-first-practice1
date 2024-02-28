@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.humanedu.starbucks.mapper.BoardMapper">
+    <select id="getFreeBoardList" parameterType="String" resultType="com.humanedu.starbucks.domain.FreeBoardVO">
+        SELECT
+            NUM,
+            title,
+            VIEW_count,
+            create_date
+        FROM
+            TB_PRACTICE
+        WHERE
+            1=1
+        <if test="search != null">
+            <if test="search != ''">
+                AND title LIKE '%' || #{search} || '%'
+            </if>
+            <if test="search == ''">
+                AND 1=0
+            </if>
+        </if>
+        ORDER BY
+            NUM DESC fetch first 5 rows only
+    </select>
+
+    <select id="getFreeBoardList2">
+
+    </select>
+
+    <insert id="putFreeBoard">
+        INSERT INTO TB_PRACTICE(writer, title, CONTENT)
+        VALUES (#{writer}, #{title}, #{content})
+    </insert>
+
+    <delete id="delFreeBoard">
+        DELETE FROM TB_PRACTICE WHERE NUM = #{num}
+    </delete>
+
+    <select id="getFreeBoardOne" resultType="com.humanedu.starbucks.domain.FreeBoardVO">
+        SELECT
+            NUM,
+            writer,
+            create_date,
+            update_date,
+            title,
+            CONTENT
+        FROM
+            TB_PRACTICE
+        WHERE
+        NUM = #{num}
+    </select>
+
+    <update id="updateFreeBoard">
+        UPDATE
+            TB_PRACTICE
+        SET
+            writer = #{writer}
+            , title = #{title}
+            , CONTENT = #{content}
+            , update_date = sysdate
+        WHERE
+            NUM = #{num}
+    </update>
+
+    <update id="updateViewCount">
+        update
+            TB_PRACTICE
+        set
+            VIEW_count = VIEW_Count + 1
+        where
+            NUM = #{num}
+    </update>
+</mapper>
