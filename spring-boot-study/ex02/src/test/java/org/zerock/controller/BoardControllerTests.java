@@ -22,10 +22,10 @@ public class BoardControllerTests {
     @Test
     public void testList() throws Exception{
         log.info("testList: " +
-                mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
-                        .andReturn()
-                        .getModelAndView()
-                        .getModelMap()
+            mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
+                    .andReturn()
+                    .getModelAndView()
+                    .getModelMap()
         );
     }
 
