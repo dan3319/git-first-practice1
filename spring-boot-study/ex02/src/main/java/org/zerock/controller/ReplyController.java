@@ -1,8 +1,6 @@
 package org.zerock.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
 import lombok.extern.log4j.Log4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,32 +17,28 @@ import java.util.List;
 @Log4j
 @AllArgsConstructor
 public class ReplyController {
-
     private ReplyService service;
 
     // 댓글 등록
     @PostMapping(value = "/new",
-                //consumes = "application/json",  // 생략 가능 (appliaction json이 기본이라)
-                produces = {MediaType.TEXT_PLAIN_VALUE})
+            //consumes = "application/json",
+            produces = { MediaType.TEXT_PLAIN_VALUE })
     public ResponseEntity<String> create(@RequestBody ReplyVO vo) {
-
-        log.info("ReplyVO: "+ vo);
+        log.info("ReplyVO: " + vo);
 
         int insertCount = service.register(vo);
         log.info("Reply INSERT COUNT: " + insertCount);
 
-        return insertCount == 1?new ResponseEntity<>("succes", HttpStatus.OK):
-                new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        // 삼항 연산자 처리
+        return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // 댓글 리스트 조회
-    @GetMapping(value = "/board/{bno}/page/{page}/pagesize/{pagesize}",
-                produces = { MediaType.APPLICATION_JSON_VALUE })
+    @GetMapping(value = "/board/{bno}/page/{page}/pagesize/{pageSize}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<List<ReplyVO>> getList(
             @PathVariable("page") int page,
             @PathVariable("bno") Long bno,
-            @PathVariable("pagesize") int amount
+            @PathVariable("pageSize") int amount
     ) {
         log.info("getList.................");
 
@@ -74,7 +68,6 @@ public class ReplyController {
     // 댓글 수정
     @RequestMapping(method = { RequestMethod.PUT, RequestMethod.PATCH },
             value = "/{rno}",
-            //consumes = "application/json",
             produces = { MediaType.TEXT_PLAIN_VALUE })
     public ResponseEntity<String> modify(
             @RequestBody ReplyVO vo,
@@ -87,8 +80,6 @@ public class ReplyController {
 
         return service.modify(vo) == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
     }
-
-
 }
+
