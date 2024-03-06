@@ -6,7 +6,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">게시판 수정하기</h1>
             </div>
-            <form role="form" action="/board/modify" method="post">
+            <form action="/board/modify" method="post">
                 <div class="form-group">
                     <label>Bno</label>
                     <input type="text" class="form-control" id="bno" name="bno" value='<c:out value="${board.bno}" />' readonly />
@@ -21,61 +21,16 @@
                 </div>
                 <div class="form-group">
                     <label>작성자</label>
-                    <input type="text" class="form-control" id="writer"  name="writer" value='<c:out value="${board.writer}" />' readonly />
+                    <input type="text" class="form-control" id="writer"  name="writer" value='<c:out value="${board.writer}" />' />
                 </div>
-                <div class="form-group">
-                    <label>작성일</label>
-                    <input class="form-control" name="regDate" value='<c:out value="${board.regdate}" />' readonly />
-                </div>
-
-                <button class="btn btn-primary" type="button"  data-oper="modify" onclick>
+                <button class="btn btn-primary" type="submit">
                     수정하기
                 </button>
-                <button class="btn btn-danger" type="button" data-oper="remove>
-                    삭제하기
-                </button>
-                <button class="btn btn-default" type="button">
+                <button class="btn btn-info" type="button" onClick='location.href="/board/list"'>
                     목록
                 </button>
             </form>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-
-// 수정하기
-$(document).ready(function() {
-    var formObj = $("form");
-
-    $('button').on("click", function(e) {
-        e.preventDefault();
-
-        var operation = $(this).data("oper");
-
-        console.log(operation);
-
-        if (operation === 'remove') {
-            formObj.attr("action", "/board/remove");
-        } else if (operation === 'list') {
-            window.location.href = "/board/list";
-            return;
-        }
-
-        formObj.submit();
-    });
-});
-
-// 삭제하기
-$(document).ready(function() {
-    var formObj = $("form");
-
-    $('button[data-oper="remove"]').on("click", function(e) {
-        e.preventDefault();
-
-    });
-});
-
-</script>
-
 <%@ include file="../includes/footer.jsp" %>

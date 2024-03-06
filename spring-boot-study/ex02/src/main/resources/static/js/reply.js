@@ -32,7 +32,7 @@ var replyService = (function() {
         var bno = param.bno;
         var page = param.page || 1;
 
-        $.getJSON("/replies/board/" + bno + "/page/" + page + "/pagesize/10",       // get 전용 ajax함수
+        $.getJSON("/replies/board/" + bno + "/page/" + page + "/pagesize/3",       // get 전용 ajax함수
             function(data) {                                            // 호출 성공시 처리되는 함수
                 if (callback) {
                     callback(data);
@@ -106,7 +106,7 @@ var replyService = (function() {
         var gap = today.getTime() - replyDateTime;
 		var dateObj = new Date(replyDateTime);
 		var str = "";
-		if (gap < (1000 * 60 * 60 * 24)) {      // 24시간이 지나지 않은 날짜는 시분초로 표시
+		if (gap < (1000 * 60 * 60 * 24)) {          // 24시간이 지나지 않은 날짜는 시분초로 표시
 			var hh = dateObj.getHours();
 			var mi = dateObj.getMinutes();
 			var ss = dateObj.getSeconds();
@@ -118,7 +118,7 @@ var replyService = (function() {
 			var mm = dateObj.getMonth() + 1; // getMonth() is zero-based
 			var dd = dateObj.getDate();
 
-			return [ yy, '/', (mm > 9 ? '' : '0') + mm, '/',
+			return [ yy, '-', (mm > 9 ? '' : '0') + mm, '-',
 					(dd > 9 ? '' : '0') + dd ].join('');
 		}
     }

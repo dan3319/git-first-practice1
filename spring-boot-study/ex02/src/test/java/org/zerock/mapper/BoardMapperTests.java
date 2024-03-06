@@ -10,6 +10,11 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.zerock.config.DBConfig;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.MybatisDynamicTestVO;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DBConfig.class})
@@ -21,9 +26,13 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testGetList() {
+		Criteria cri = new Criteria();
+		cri.setType("TW");	// T(제목), W(작성자), C(내용), TW(제목 or 작성자), TC(제목 or 내용), TWC(제목 or 작성자 or 내용)
+		cri.setKeyword("ㅌㅊㅋㅍㄴ");
+
 //		System.out.println("aaaaa");
 //		log.info("bbbbb");
-		mapper.getList().forEach(board -> log.info("abc: " + board));
+		mapper.getList(cri).forEach(board -> log.info("abc: " + board));
 	}
 
 	@Test
@@ -50,7 +59,7 @@ public class BoardMapperTests {
 
 	@Test
 	public void testRead() {
-		BoardVO boardVO = mapper.read(2L);
+		BoardVO boardVO = mapper.read(44L);
 		log.info(boardVO);
 	}
 
@@ -70,5 +79,31 @@ public class BoardMapperTests {
 
 		int count = mapper.update(board);
 		log.info("UPDATE COUNT: " + count);
+	}
+
+	@Test
+	public void mybatisDynamic1Test() {
+		MybatisDynamicTestVO test1 = new MybatisDynamicTestVO();
+
+		HashMap<String, String> map = new HashMap<>();
+		map.put("T", "TTTT");
+		map.put("C", "CCCC");
+
+		test1.setMap(map);
+
+		mapper.getDynamicMybatis(test1);
+	}
+
+	@Test
+	public void mybatisDynamic2Test() {
+		MybatisDynamicTestVO test2 = new MybatisDynamicTestVO();
+
+		HashMap<String, String> map = new HashMap<>();
+		map.put("T", "TTTT");
+		map.put("C", "CCCC");
+
+		test2.setMap(map);
+
+		mapper.getDynamicMybatis2(test2);
 	}
 }

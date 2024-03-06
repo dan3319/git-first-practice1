@@ -29,7 +29,10 @@ public class ReplyController {
         int insertCount = service.register(vo);
         log.info("Reply INSERT COUNT: " + insertCount);
 
-        return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+        Integer newRno = service.getCurrVal();
+        log.info("Reply new number: " + newRno);
+
+        return insertCount == 1 ? new ResponseEntity<>(newRno.toString(), HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

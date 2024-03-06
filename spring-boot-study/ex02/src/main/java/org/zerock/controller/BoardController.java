@@ -12,7 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 
 import lombok.RequiredArgsConstructor;
+import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
+import org.zerock.service.ReplyService;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BoardController {
 	private BoardService service;
+	private ReplyService replyService;
 
 	/**
 	 * 게시물 목록 조회
@@ -29,11 +32,12 @@ public class BoardController {
 	 * @return
 	 */
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
 		log.info("list");
 
-		List<BoardVO> boardVOList = service.getList();
+		List<BoardVO> boardVOList = service.getList(cri);
 		model.addAttribute("boardList", boardVOList);
+		model.addAttribute("criteria", cri);
 	}
 
 	@GetMapping("/register")
@@ -67,13 +71,14 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping("/get")
+	@GetMapping({"/get", "/modify"})
 	public void get(
 			@RequestParam("bno") Long bno
 			, Model model
 	) {
-		log.info("/get");
+		log.info("/get or modify");
 		model.addAttribute("board", service.get(bno));
+		model.addAttribute("replyTotalCount", replyService.getTotalCount(bno));
 	}
 
 	@PostMapping("/remove")

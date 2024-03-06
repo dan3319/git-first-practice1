@@ -14,6 +14,6 @@ public class CommonExceptionAdvice {
         model.addAttribute("exception", ex);
         System.out.println("exception: " + ex.getMessage());
 
-        return "404";
+        return "error_page";
     }
 }

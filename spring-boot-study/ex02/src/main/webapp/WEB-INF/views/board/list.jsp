@@ -125,7 +125,7 @@
 					$("#myModal").modal("show");
 				}
 			}
-
+			
 			var searchForm = $("#searchForm");
 			$("#searchForm button").on("click",
 				function(e) {
