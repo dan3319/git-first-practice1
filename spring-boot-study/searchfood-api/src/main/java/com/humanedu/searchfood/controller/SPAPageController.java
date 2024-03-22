@@ -8,9 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SPAPageController {
     @GetMapping("/page/main")
-    public ModelAndView pageMain(){
-        return new ModelAndView("main");    // main.html 파일로 이동(타임리프 덕분에 jsp를 찾지 않고 html로 찾음)
-
+    public ModelAndView pageMain() {
+        return new ModelAndView("main");   // main.html파일로 이동
     }
-
 }
